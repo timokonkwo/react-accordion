@@ -1,11 +1,22 @@
 import { useState } from 'react'
 import './App.css'
+import Question from './Question'
+import data from "./data"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const questions = data.map(item => <Question title={item.title} info={item.info}  />)
 
   return (
-    <div className="App"> App </div>
+    <section>
+      <h2>Questions And Answers About Login</h2>
+
+      <main>
+        <div className="container">
+            {questions}
+        </div>
+      </main>
+    </section>
   )
 }
 
