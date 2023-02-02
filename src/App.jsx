@@ -1,23 +1,22 @@
-import { useState } from 'react'
-import './App.css'
-import Question from './Question'
-import data from "./data"
+import { useState } from "react";
+import "./App.css";
+import Question from "./Question";
+import data from "./data";
 
 function App() {
+	const questions = data.map((item) => (
+		<Question title={item.title} key={item.id} info={item.info} />
+	));
 
-  const questions = data.map(item => <Question title={item.title} info={item.info}  />)
+	return (
+		<main>
+			<div className="container">
+				<h2>Accordion Demonstration with ReactJS</h2>
 
-  return (
-    <section>
-      <h2>Questions And Answers About Login</h2>
-
-      <main>
-        <div className="container">
-            {questions}
-        </div>
-      </main>
-    </section>
-  )
+				<section className="info">{questions}</section>
+			</div>
+		</main>
+	);
 }
 
-export default App
+export default App;

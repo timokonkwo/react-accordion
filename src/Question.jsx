@@ -1,22 +1,27 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai"
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 
-export default function Question(props){
+export default function Question({ title, info }) {
+	const [display, setDisplay] = useState(false);
 
-    const [display, setDisplay] = useState(false)
+	const toggle = () => {
+		setDisplay((prev) => !prev);
+	};
+	return (
+		<article className="question">
+			<header>
+				<h4>{title}</h4>
+				<button onClick={toggle} className="btn">
+					{display ? (
+						<AiOutlineMinusCircle/>
+					) : (
+						<AiOutlinePlusCircle/>
+					)}
+				</button>
+			</header>
 
-    const toggle = () => {
-        setDisplay(prev => !prev)
-    }
-    return (
-        <div className="question">
-            <header>
-                <h4>{props.title}</h4>
-                {display ? <AiOutlineMinusCircle className="btn" onClick={toggle}/> : <AiOutlinePlusCircle className="btn" onClick={toggle}/>}
-            </header>
-
-            {display && <p>{props.info}</p>}
-        </div>
-    )
+			{display && <p>{info}</p>}
+		</article>
+	);
 }
